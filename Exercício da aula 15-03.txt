@@ -1,0 +1,6 @@
+Caio,
+Eu entendi que o ControlManager é ligado ao LayoutManager e o mesmo tem
+acesso as páginas subsequentes em uma relação de hierarquia.
+Eu não consegui fazer as chamadas das páginas em .js, mas encontrei esse script
+(não consegui aplicar)
+http://jsfiddle.net/u3jaY/16/
