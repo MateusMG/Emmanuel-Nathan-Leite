@@ -8,10 +8,11 @@ class ResourceController
 
 	private $controlMap = 
 	[
-		"cebola" => "CebolaController",
 		"user" => "UserController",
-		"product" => "ProductController",
-	];
+		"sign" => "SignController";
+		"friendship" => "FriendshipController";
+		"chat" => "ChatController";
+ 	];
 
 	public function createResource($request)
 	{

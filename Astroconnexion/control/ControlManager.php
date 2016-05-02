@@ -25,4 +25,23 @@ class ControlManager
 
 		return $this->resourceController->createResource($request);
 	}	
+
+	public function route_method($request)
+	{
+		switch($request->get_method())
+		{
+			case "GET":
+			           break;
+			
+			case "POST": 
+			   return $this->resourceController->createResource($request);
+			    break;
+			case "PUT":
+			 			break;
+			case "DELETE": 
+						break;
+			default:
+		           
+		}	
+	}
 }

@@ -9,11 +9,10 @@ class User{
 	$gender;
 	$email;
 	$password;
-	$photo;
 
 	
 	
-	public function __construct($name, $lastName, $birthdate, $birthplace, $birthtime, $gender, $email, $password, $photo){
+	public function __construct($name, $lastName, $birthdate, $birthplace, $birthtime, $gender, $email, $password){
 		$this->set_name($name);
 		$this->set_lastName($lastName);
 		$this->set_birthdate($birthdate);
@@ -22,7 +21,6 @@ class User{
 		$this->set_gender($gender);
 		$this->set_email($email);
 		$this->set_password($password);
-		$this->set_photo($photo);
 	}
 	
 	//SET
@@ -55,9 +53,6 @@ class User{
 		$this->password = $password;
 	}
 
-	private function set_photo($photo){
-		$this->photo = $photo;
-	}
 
 	//GET
 	public function get_Name (){
