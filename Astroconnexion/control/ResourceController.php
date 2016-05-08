@@ -9,13 +9,17 @@ class ResourceController
 	private $controlMap = 
 	[
 		"user" => "UserController",
-		"sign" => "SignController";
-		"friendship" => "FriendshipController";
-		"chat" => "ChatController";
+		"sign" => "SignController", 
+		"friendship" => "FriendshipController",
+		"chat" => "ChatController",
  	];
 
 	public function createResource($request)
 	{
-		return new $this->controlMap[$request->get_resource()]());
+		return (new $this->controlMap[$request->get_resource()]())->register($request);
+	}
+	public function searchResource($request)
+	{
+		return (new $this->controlMap[$request->get_resource()]())->search($request);
 	}
 }

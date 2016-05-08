@@ -1,19 +1,19 @@
 <?php
 class User{
 	
-	$name;
-	$lastName;
-	$birthdate;
-	$birthplace;
-	$birthtime;
-	$gender;
-	$email;
-	$password;
+	private $firstName;
+	private $lastName;
+	private $birthdate;
+	private $birthplace;
+	private $birthtime;
+	private $gender;
+	private $email;
+	private $password;
 
 	
 	
-	public function __construct($name, $lastName, $birthdate, $birthplace, $birthtime, $gender, $email, $password){
-		$this->set_name($name);
+	public function __construct($firstName, $lastName, $birthdate, $birthplace, $birthtime, $gender, $email, $password){
+		$this->set_firstName($firstName);
 		$this->set_lastName($lastName);
 		$this->set_birthdate($birthdate);
 		$this->set_birthplace($birthplace);
@@ -24,8 +24,8 @@ class User{
 	}
 	
 	//SET
-	private function set_name ($name){
-		$this->name = $name;
+	private function set_firstName ($firstName){
+		$this->firstName = $firstName;
 	}
 	
 	private function set_lastName ($lastName){

@@ -1,8 +1,9 @@
 <?php
 class Chat{
 	
-	$userchat;
-
+	private $userchat;
+	//private $idSend
+	//private $idRecieve
 	
 	
 	public function __construct($userchat){

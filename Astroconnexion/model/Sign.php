@@ -1,17 +1,17 @@
 <?php
 class Sign{
 	
-	$sun;
-	$moon;
-	$ascendant;
-	$mercury;
-	$venus;
-	$mars;
-	$jupiter;
-	$saturn;
-	$uranus; 
-	$neptune;
-	$pluto;
+	private $sun;
+	private $moon;
+	private $ascendant;
+	private $mercury;
+	private $venus;
+	private $mars;
+	private $jupiter;
+	private $saturn;
+	private $uranus; 
+	private $neptune;
+	private $pluto;
 
 	
 	

@@ -1,7 +1,7 @@
 <?php
 class Friendship{
 	
-	$solicitation;
+	 private $solicitation;
 
 	
 	
