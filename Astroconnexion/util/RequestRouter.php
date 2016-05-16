@@ -1,6 +1,7 @@
 <?php
 
-include "control/ControlManager.php";
+include_once "control/ControlManager.php";
+include_once "database/DatabaseConnector.php";
 
 class RequestRouter
 {

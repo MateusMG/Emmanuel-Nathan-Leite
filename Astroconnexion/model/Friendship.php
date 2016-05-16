@@ -6,7 +6,7 @@ class Friendship{
 	
 	
 	public function __construct($solicitation){
-		$this->set_solicitation($solicitation);
+		$this->solicitation = $solicitation;
 	}	
 	
 	//SET
@@ -17,7 +17,7 @@ class Friendship{
 
 	//GET
 	public function get_solicitation (){
-		echo $solicitation;
+		return $this->solicitation;
 	}
 	
 	

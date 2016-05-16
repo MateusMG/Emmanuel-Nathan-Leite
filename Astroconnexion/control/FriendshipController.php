@@ -5,16 +5,26 @@ include_once "database/DatabaseConnector.php";
 
 class FriendshipController
 {
+
+    private $requiredParameters = 
+    [
+        "solicitation",
+    ];
+
     public function register($request)
     {
         $params = $request->get_params();
-        $friendship = new Frindship($params["solicitation"]);
 
-        $db = new DatabaseConnector("localhost", "astroconnexion", "mysql", "", "root", "");
+        if ($this->isValid($params)) {
+            $friendship = new Frindship($params["solicitation"]);
+            $db = new DatabaseConnector("localhost", "astroconnexion", "mysql", "", "root", "");
 
-        $conn = $db->getConnection();
+            $conn = $db->getConnection();
 
-        return $conn->query($this->generateInsertQuery($friendship));
+            return $conn->query($this->generateInsertQuery($friendship));
+        }else{
+            echo "Erro 400: Bad Request";
+        }
     }
     private function generateInsertQuery($friendship)
     {
@@ -27,9 +37,12 @@ class FriendshipController
     {
         $params = $request->get_params();
         $crit = $this->generateCriteria($params);
-        $db = new DatabaseConnector("localhost", "Astroconnexion", "mysql", "", "root", "");
+
+        $db = new DatabaseConnector("localhost", "astroconnexion", "mysql", "", "root", "");
+
         $conn = $db->getConnection();
-        $result = "SELECT solicitation FROM friendship WHERE ".$crit;
+        
+        $result =  $conn->query("SELECT solicitation FROM friendship WHERE ".$crit);
         //foreach($result as $row)
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -44,4 +57,13 @@ class FriendshipController
         return substr($criteria, 0, -4);    
     }
 
+    private function isValid($parameters)
+    {
+        $keys = array_keys($parameters);
+        $diff1 = array_diff($keys, $this->requiredParameters);
+        $diff2 = array_diff($this->requiredParameters, $keys);
+        if (empty($diff2) && empty($diff1))
+            return true;
+        return false;
+    }
 }

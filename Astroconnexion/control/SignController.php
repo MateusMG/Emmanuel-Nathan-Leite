@@ -5,26 +5,47 @@ include_once "database/DatabaseConnector.php";
 
 class SignController
 {
+
+    private $requiredParameters = 
+    [
+        "sun",
+        "moon", 
+        "ascendant",
+        "mercury",
+        "venus",
+        "mars",
+        "jupiter",
+        "saturn",
+        "uranus",
+        "neptune",
+        "pluto",
+    ];
+
     public function register($request)
     {
         $params = $request->get_params();
-        $sign = new Sign($params["sun"],
-            $params["moon"],
-            $params["ascendant"]),
-            $params["mercury"]),
-            $params["venus"]),
-            $params["mars"]),
-            $params["jupiter"]),
-            $params["saturn"]),
-            $params["uranus"]),
-            $params["neptune"]),
-            $params["pluto"]);
+
+        if ($this->isValid($params)) {
+            $sign = new Sign($params["sun"],
+                 $params["moon"],
+                 $params["ascendant"],
+                 $params["mercury"],
+                 $params["venus"],
+                 $params["mars"],
+                 $params["jupiter"],
+                 $params["saturn"],
+                 $params["uranus"],
+                 $params["neptune"],
+                 $params["pluto"]);
 
         $db = new DatabaseConnector("localhost", "astroconnexion", "mysql", "", "root", "");
 
         $conn = $db->getConnection();
         
         return $conn->query($this->generateInsertQuery($sign));
+        } else {
+            echo "Error 400: Bad Request";
+        }
     }
     private function generateInsertQuery($sign)
     {
@@ -47,9 +68,14 @@ class SignController
     {
         $params = $request->get_params();
         $crit = $this->generateCriteria($params);
-        $db = new DatabaseConnector("localhost", "Astroconnexion", "mysql", "", "root", "");
+
+        $db = new DatabaseConnector("localhost", "astroconnexion", "mysql", "", "root", "");
+
         $conn = $db->getConnection();
-        $result = "SELECT sun, moon, ascendant, mercury, venus, mars, jupiter, saturn, uranus, neptune, pluto FROM sign WHERE ".$crit;
+        
+        $result =  $conn->query("SELECT sun, moon, ascendant, mercury, venus, mars, jupiter, saturn, uranus, neptune, pluto 
+                                    FROM sign 
+                                    WHERE ".$crit);
         //foreach($result as $row)
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -64,4 +90,13 @@ class SignController
         return substr($criteria, 0, -4);    
     }
 
+     private function isValid($parameters)
+    {
+        $keys = array_keys($parameters);
+        $diff1 = array_diff($keys, $this->requiredParameters);
+        $diff2 = array_diff($this->requiredParameters, $keys);
+        if (empty($diff2) && empty($diff1))
+            return true;
+        return false;
+    }
 }

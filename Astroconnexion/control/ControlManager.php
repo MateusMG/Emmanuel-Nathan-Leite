@@ -1,7 +1,8 @@
 <?php
 
-include "RequestController.php";
-include "ResourceController.php";
+include_once "RequestController.php";
+include_once "ResourceController.php";
+//include_once "DatabaseController.php"
 
 class ControlManager
 {
@@ -13,6 +14,7 @@ class ControlManager
 		$this->resourceController = new ResourceController();
 
 		$this->requestController = new RequestController();
+
 	}
 
 	public function getResource()
@@ -23,20 +25,20 @@ class ControlManager
 			    $_SERVER["REQUEST_URI"],
 			    $_SERVER["SERVER_ADDR"]);
 
-		return $this->resourceController->createResource($request);
+		return $this->routeMethod($request);
 	}	
 
-	public function route_method($request)
+	public function routeMethod($request)
 	{
 		switch($request->get_method())
 		{
 			case "GET":
 				return $this->resourceController->searchResource($request);
-			           break;
+			    	break;
 			
 			case "POST": 
 			    return $this->resourceController->createResource($request);
-			    break;
+			   		 break;
 			case "PUT":
 			 			break;
 			case "DELETE": 

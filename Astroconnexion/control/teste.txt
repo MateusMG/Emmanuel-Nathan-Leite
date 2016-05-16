@@ -1,0 +1,4 @@
+User:
+http://localhost:83/Astroconnexion/user/?firstName=Emmanuel&lastName=Nathan&birthdate=1995-06-22&birthplace=Pirapora&birthtime=09:40:16&gender=masculino&email=emmanuel_nlb@hotmail.com&password=CebolaRox@&codSign=1&codChat=1&codFriendship=1
+Sign:
+http://localhost:83/Astroconnexion/sign/?sun=cancer&moon=taurus&ascendant=leo&mercury=gemini&venus=gemini&mars=virgo&jupiter=saggitarius&uranus=capricorn&neptune=capricorn&pluto=scorpio

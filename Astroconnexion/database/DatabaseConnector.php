@@ -10,7 +10,7 @@ class DatabaseConnector
 	private $user;
 	private $password;
 
-	public function __construct($ip, $db_name, $type,$port, $user, $password)
+	public function __construct($ip, $db_name, $type, $port, $user, $password)
 	{
 		$this->ip = $ip;
 		$this->db_name = $db_name;

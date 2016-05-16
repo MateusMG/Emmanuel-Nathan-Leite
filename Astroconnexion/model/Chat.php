@@ -7,7 +7,7 @@ class Chat{
 	
 	
 	public function __construct($userchat){
-		$this->set_userchat($userchat);
+		$this->userchat = $userchat;
 	}	
 	
 	//SET
@@ -18,7 +18,7 @@ class Chat{
 
 	//GET
 	public function get_userchat (){
-		echo $userchat;
+		return $this->userchat;
 	}
 	
 	

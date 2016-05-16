@@ -16,17 +16,17 @@ class Sign{
 	
 	
 	public function __construct($sun, $moon, $ascendant, $mercury, $venus, $mars, $jupiter, $saturn, $uranus, $neptune, $pluto){
-		$this->set_sun ($sun);
-		$this->set_moon($moon);
-		$this->set_ascendant($ascendant);
-		$this->set_mercury($mercury);
-		$this->set_venus($venus);
-		$this->set_mars($mars);
-		$this->set_jupiter($jupiter);
-		$this->set_saturn($saturn);
-		$this->set_uranus($uranus);
-		$this->set_neptune($neptune);
-		$this->set_pluto($pluto);
+		$this->sun = $sun;
+		$this->moon = $moon;
+		$this->ascendant = $ascendant;
+		$this->mercury = $mercury;
+		$this->venus = $venus;
+		$this->mars = $mars;
+		$this->jupiter = $jupiter;
+		$this->saturn = $saturn;
+		$this->uranus = $uranus;
+		$this->neptune = $neptune;
+		$this->pluto = $pluto;
 	}
 	
 	//SET
@@ -54,7 +54,6 @@ class Sign{
 		$this->mars = $mars;
 	}
 
-	
 	private function set_jupiter($jupiter){
 		$this->jupiter = $jupiter;
 	}
@@ -77,46 +76,46 @@ class Sign{
 
 	//GET
 	public function get_sun (){
-		echo $sun;
+		return $this->sun;
 	}
 	
 	public function get_moon (){
-		echo $moon;
+		return $this->moon;
 	}
 	
 	public function get_ascendant(){
-		echo $ascendant;
+		return $this->ascendant;
 	}
 	
 	public function get_mercury(){
-		echo $mercury;
+		return $this->mercury;
 	}
 	
 	public function get_venus(){
-		echo $venus;
+		return $this->venus;
 	}
 
 	public function get_mars(){
-		echo $mars;
+		return $this->mars;
 	}
 
 	public function get_jupiter(){
-		echo $jupiter;
+		return $this->jupiter;
 	}
 
 	public function get_saturn(){
-		echo $saturn;
+		return $this->saturn;
 	}
 
 	public function get_uranus(){
-		echo $uranus;
+		return $this->uranus;
 	}
 
 	public function get_neptune(){
-		echo $neptune;
+		return $this->neptune;
 	}
 
 	public function get_pluto(){
-		echo $pluto;
+		return $this->pluto;
 	}
 }

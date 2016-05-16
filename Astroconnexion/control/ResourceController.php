@@ -2,7 +2,9 @@
 
 include_once "model/Request.php";
 include_once "control/UserController.php";
-
+include_once "control/SignController.php";
+include_once "control/ChatController.php";
+//include_once "control/FriendshipController.php";
 class ResourceController
 {
 
@@ -18,6 +20,7 @@ class ResourceController
 	{
 		return (new $this->controlMap[$request->get_resource()]())->register($request);
 	}
+	
 	public function searchResource($request)
 	{
 		return (new $this->controlMap[$request->get_resource()]())->search($request);

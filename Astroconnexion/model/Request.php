@@ -19,6 +19,8 @@ class Request
 	}
 	
 	
+	//SET
+
 	private function set_protocol($protocol)
 	{
 		$this->protocol = $protocol;
@@ -44,9 +46,21 @@ class Request
 		$this->server_address = $server;
 	}
 
+	//GET
+
 	public function get_resource()
 	{
 		return $this->resource;
+	}
+
+	public function get_method()
+	{
+		return $this->method;
+	}
+
+	public function get_params()
+	{
+		return $this->params;	
 	}
 
 
