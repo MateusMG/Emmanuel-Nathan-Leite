@@ -13,7 +13,7 @@ class ResourceController
 		"user" => "UserController",
 		"sign" => "SignController", 
 		"friendship" => "FriendshipController",
-		"chat" => "ChatController",
+		"chat" => "ChatController"
  	];
 
 	public function createResource($request)
@@ -25,4 +25,14 @@ class ResourceController
 	{
 		return (new $this->controlMap[$request->get_resource()]())->search($request);
 	}
+
+	public function updateResource($request)
+    {
+        return (new $this->controlMap[$request->get_resource()]())->update($request);
+    }
+    
+    public function deleteResource($request)
+    {
+        return (new $this->controlMap[$request->get_resource()]())->delete($request);
+    }
 }

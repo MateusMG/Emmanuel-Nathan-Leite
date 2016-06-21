@@ -90,6 +90,18 @@ class SignController
         return substr($criteria, 0, -4);    
     }
 
+    public function update($request)
+    {
+        $params = $request->get_params();
+        $db = new DatabaseConnector("localhost", "astroconnexion", "mysql", "", "root", "");
+        $conn = $db->getConnection();
+        foreach ($params as $key => $value) {
+            $result = $conn->query("UPDATE sign SET " . $key . " =  '" . $value . "' WHERE email = '" . $params["email"] . "'");
+        }
+        return $result;
+    }
+
+
      private function isValid($parameters)
     {
         $keys = array_keys($parameters);

@@ -29,51 +29,6 @@ class Sign{
 		$this->pluto = $pluto;
 	}
 	
-	//SET
-	private function set_sun ($sun){
-		$this->sun = $sun;
-	}
-	
-	private function set_moon ($moon){
-		$this->moon = $moon;
-	}
-	
-	private function set_ascendant($ascendant){
-		$this->ascendant = $ascendant;
-	}
-	
-	private function set_mercury($mercury){
-		$this->mercury = $mercury;
-	}
-	
-	private function set_venus($venus){
-		$this->venus = $venus;
-	}
-
-	private function set_mars($mars){
-		$this->mars = $mars;
-	}
-
-	private function set_jupiter($jupiter){
-		$this->jupiter = $jupiter;
-	}
-
-	private function set_saturn($saturn){
-		$this->saturn = $saturn;
-	}
-
-	private function set_uranus($uranus){
-		$this->uranus = $uranus;
-	}
-
-	private function set_neptune($neptune){
-		$this->neptune = $neptune;
-	}
-
-	private function set_pluto($pluto){
-		$this->pluto = $pluto;
-	}
-
 	//GET
 	public function get_sun (){
 		return $this->sun;

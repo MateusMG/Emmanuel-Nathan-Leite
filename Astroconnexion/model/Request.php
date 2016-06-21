@@ -1,5 +1,4 @@
 <?php
-
 class Request
 {
 	private $protocol;
@@ -7,8 +6,7 @@ class Request
 	private $resource;
 	private $params;
 	private $server_address;
-
-
+	
 	public function __construct($protocol,$method,$resource,$params, $server_addr)
 	{
 		$this->set_protocol($protocol);
@@ -20,7 +18,6 @@ class Request
 	
 	
 	//SET
-
 	private function set_protocol($protocol)
 	{
 		$this->protocol = $protocol;
@@ -40,44 +37,21 @@ class Request
 	{
 		$this->params = $params;
 	}
-
 	private function set_server_addr($server)
 	{
 		$this->server_address = $server;
 	}
-
 	//GET
-
 	public function get_resource()
 	{
 		return $this->resource;
 	}
-
 	public function get_method()
 	{
 		return $this->method;
 	}
-
 	public function get_params()
 	{
 		return $this->params;	
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
 }

@@ -10,11 +10,6 @@ class Chat{
 		$this->userchat = $userchat;
 	}	
 	
-	//SET
-	private function set_userchat ($userchat){
-		$this->userchat = $userchat;
-	}
-	
 
 	//GET
 	public function get_userchat (){

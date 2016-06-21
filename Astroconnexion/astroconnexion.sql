@@ -7,6 +7,23 @@ CREATE SCHEMA IF NOT EXISTS `Astroconnexion` DEFAULT CHARACTER SET latin1 COLLAT
 USE `Astroconnexion` ;
 
 -- -----------------------------------------------------
+-- Table `Astroconnexion`.`user`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `Astroconnexion`.`user` ;
+
+CREATE  TABLE IF NOT EXISTS `Astroconnexion`.`user` (
+  `firstName` VARCHAR(50) NOT NULL ,
+  `lastName` VARCHAR(50) NOT NULL ,
+  `birthdate` DATE NOT NULL ,
+  `birthplace` VARCHAR(50) NOT NULL ,
+  `birthtime` TIME NOT NULL ,
+  `email` VARCHAR(100) NOT NULL ,
+  `password` TEXT NOT NULL ,
+  PRIMARY KEY (`email`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `Astroconnexion`.`sign`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Astroconnexion`.`sign` ;
@@ -24,21 +41,16 @@ CREATE  TABLE IF NOT EXISTS `Astroconnexion`.`sign` (
   `uranus` TEXT NOT NULL ,
   `neptune` TEXT NOT NULL ,
   `pluto` TEXT NOT NULL ,
-  PRIMARY KEY (`idsign`) )
+  `user_email` VARCHAR(100) NOT NULL ,
+  PRIMARY KEY (`idsign`) ,
+  INDEX `fk_sign_user` (`user_email` ASC) ,
+  CONSTRAINT `fk_sign_user`
+    FOREIGN KEY (`user_email` )
+    REFERENCES `Astroconnexion`.`user` (`email` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 COMMENT = '	';
-
-
--- -----------------------------------------------------
--- Table `Astroconnexion`.`chat`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `Astroconnexion`.`chat` ;
-
-CREATE  TABLE IF NOT EXISTS `Astroconnexion`.`chat` (
-  `idchat` INT NOT NULL AUTO_INCREMENT ,
-  `userchat` VARCHAR(50) NOT NULL ,
-  PRIMARY KEY (`idchat`) )
-ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -49,44 +61,31 @@ DROP TABLE IF EXISTS `Astroconnexion`.`friendship` ;
 CREATE  TABLE IF NOT EXISTS `Astroconnexion`.`friendship` (
   `idfriendship` INT NOT NULL AUTO_INCREMENT ,
   `solicitation` VARCHAR(45) NOT NULL ,
-  PRIMARY KEY (`idfriendship`) )
+  `user_email` VARCHAR(100) NOT NULL ,
+  PRIMARY KEY (`idfriendship`) ,
+  INDEX `fk_friendship_user1` (`user_email` ASC) ,
+  CONSTRAINT `fk_friendship_user1`
+    FOREIGN KEY (`user_email` )
+    REFERENCES `Astroconnexion`.`user` (`email` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Astroconnexion`.`user`
+-- Table `Astroconnexion`.`chat`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Astroconnexion`.`user` ;
+DROP TABLE IF EXISTS `Astroconnexion`.`chat` ;
 
-CREATE  TABLE IF NOT EXISTS `Astroconnexion`.`user` (
-  `firstName` VARCHAR(50) NOT NULL ,
-  `lastName` VARCHAR(50) NOT NULL ,
-  `birthdate` DATE NOT NULL ,
-  `birthplace` VARCHAR(50) NOT NULL ,
-  `birthtime` TIME NOT NULL ,
-  `gender` VARCHAR(50) NOT NULL ,
-  `email` VARCHAR(100) NOT NULL ,
-  `password` TEXT NOT NULL ,
-  `codSign` INT NOT NULL ,
-  `codChat` INT NOT NULL ,
-  `codFriendship` INT NOT NULL ,
-  INDEX `fk_user_sign` (`codSign` ASC) ,
-  INDEX `fk_user_chat1` (`codChat` ASC) ,
-  INDEX `fk_user_friendship1` (`codFriendship` ASC) ,
-  PRIMARY KEY (`email`) ,
-  CONSTRAINT `fk_user_sign`
-    FOREIGN KEY (`codSign` )
-    REFERENCES `Astroconnexion`.`sign` (`idsign` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_user_chat1`
-    FOREIGN KEY (`codChat` )
-    REFERENCES `Astroconnexion`.`chat` (`idchat` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_user_friendship1`
-    FOREIGN KEY (`codFriendship` )
-    REFERENCES `Astroconnexion`.`friendship` (`idfriendship` )
+CREATE  TABLE IF NOT EXISTS `Astroconnexion`.`chat` (
+  `idchat` INT NOT NULL AUTO_INCREMENT ,
+  `userchat` VARCHAR(50) NOT NULL ,
+  `user_email` VARCHAR(100) NOT NULL ,
+  PRIMARY KEY (`idchat`) ,
+  INDEX `fk_chat_user1` (`user_email` ASC) ,
+  CONSTRAINT `fk_chat_user1`
+    FOREIGN KEY (`user_email` )
+    REFERENCES `Astroconnexion`.`user` (`email` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
